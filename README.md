@@ -1,3 +1,7 @@
+Back -> localhost:3000
+Front -> localhost:8080
+Banco -> localhost:8081
+
 # PASSO 1 - Instalar o Docker
  - https://www.docker.com/get-started/
 
@@ -14,12 +18,7 @@
  - docker compose up -d
 
 
-
-
- 
-
-<!-- *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- -->
-# # Docker e Docker Compose Comandos
+# ----------- Docker e Docker Compose Comandos --------------
 
 ## Docker
 
@@ -117,16 +116,7 @@
 
 <!-- Executa um comando em um contêiner em execução de um serviço definido no docker-compose.yml. -->
 
-# # SERVIÇO: Nome do serviço no docker-compose.yml.
-
-<!--  Gerenciamento de Volumes -->
-
-### 1. docker volume ls
-
-- docker volume ls
-<!-- Lista todos os volumes Docker. -->
-
-### 2. docker volume rm
+###  docker volume rm
 
 - docker volume rm NOME_DO_VOLUME
 
@@ -140,24 +130,10 @@
 
 <!-- Lista todas as redes Docker. -->
 
-### 2. docker network rm
+### 2. docker network rm (remove docker)
 
 - docker network rm NOME_DA_REDE
 
-<!-- Remove uma rede Docker. -->
-
-# # Exemplos Práticos
-
-- Construir e Executar um Contêiner
-
-- docker build -t minha_imagem:latest .
-
-- docker run -d -p 8080:80 minha_imagem:latest
-
-<!-- Usando Docker Compose -->
-<!-- Subir os serviços definidos no docker-compose.yml: -->
-
-- docker-compose up
 
 # Parar e remover os serviços:
 
