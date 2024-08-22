@@ -1,0 +1,68 @@
+services:
+  backend:
+    build: 
+      context: ./applications/Carreiras_back/public
+      dockerfile: Dockerfile
+    networks:
+      - net_principal
+    volumes:
+      - ./applications/Carreiras_back/public:/usr/src/app
+    working_dir: /usr/src/app
+    command: ["npm", "start"]
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  frontend:
+    build: 
+      context: ./applications/Carreiras_front/public
+      dockerfile: Dockerfile
+    networks:
+      - net_principal
+    volumes:
+      - ./applications/Carreiras_front/public:/usr/src/app
+    working_dir: /usr/src/app
+    command: ["yarn", "dev"]
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    working_dir: /home
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./applications/Carreiras_back/public/config/DBcarreiras.sql:/docker-entrypoint-initdb.d/DBcarreiras.sql
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'carreiras'
+    networks:
+      - net_principal
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: 'root'
+    depends_on:
+      - mysql
+    networks:
+      - net_principal
+
+networks:
+  net_principal:
+
+volumes:
+  mysql_data:
+    driver: local
