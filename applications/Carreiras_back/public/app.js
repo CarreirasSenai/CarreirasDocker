@@ -18,7 +18,7 @@ app.use(session({
 
 // Use o CORS para permitir todas as origens ou especifique as origens permitidas
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:8080', // O domínio do seu front-end
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000', // O domínio do seu front-end
   credentials: true // Permitir envio de cookies
 }));
 
@@ -41,7 +41,8 @@ app.use(fileupload());
 // Use suas rotas
 app.use('/', routes);
 
-const port = process.env.BACKEND_URL || 3000;
+
+const port = 4000;
 app.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
