@@ -4,14 +4,11 @@ const authMiddleware = require('../middleware/auth');
 const path = require('path');
 const { json } = require('body-parser');
 
-router.get('/', (req, res) => {
-    res.send('Hello World!');
-  });
-
-// Objetos do controller
-const DataHora = require('../controller/dataHora');
+// Objetos
+const DataHora = require('../services/dataHora');
 const Candidato = require('../controller/candidato');
 const Vaga = require('../controller/vaga');
+const Nodemailer = require('../services/nodemailer');
 
 // rotas candidato
 router.post('/candidato/login', Candidato.login);
@@ -22,6 +19,10 @@ router.get('/candidato/read', authMiddleware, Candidato.getUser);
 
 // rotas vagas
 router.get('/vaga/pesquisa', Vaga.buscarVaga);
+
+// rotas nodemailer
+router.post('/enviar/codigo', Nodemailer.enviarCodigo);
+router.post('/validar/codigo', Nodemailer.validarCodigo);
 
 // rota logout
 router.get('/logout', (req, res) => {

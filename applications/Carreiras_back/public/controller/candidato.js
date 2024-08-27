@@ -1,5 +1,5 @@
 const Candidato = require('../model/candidato');
-const DataHora = require('./dataHora');
+const DataHora = require('../services/dataHora');
 
 // Create
 exports.createUser = (req, res) => {
@@ -24,7 +24,7 @@ exports.createUser = (req, res) => {
 // Login
 exports.login = (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password)
+
     Candidato.getLogin(email, password, (err, user) => {
         if (err) {
             return res.status(500).json({ error: err.message });
@@ -42,6 +42,7 @@ exports.login = (req, res) => {
 
 // Read / Autenticar
 exports.getUser = (req, res) => {
+
     if (!req.session.usuario) {
         return res.status(401).json({ error: 'Usuário não autenticado!' });
     }

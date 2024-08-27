@@ -6,7 +6,7 @@
         <h1>Lista de Empresas</h1>
       </div>
       <div class="busca">
-        <div class="procurar-Usuarios">
+        <div class="procurar-empresas">
           <v-card-text>
             <v-text-field
               :loading="loading"
@@ -27,24 +27,24 @@
           <v-col cols="12">
             <v-card class="card-da-empresa">
               <v-row align="center" no-gutters>
-                <v-col cols="1" class="texte-center">
+                <v-col cols="3" class="text-center">
                   <v-avatar color="surface-variant" size="60">
-                    <v-icon>mdi-account-circle</v-icon>
+                    <v-icon class="empresa-foto">mdi-account-circle</v-icon>
                   </v-avatar>
                 </v-col>
-                <v-col cons="1">
+                <v-col cons="3">
                   <h3 class="empresa-nome">TOTVS - Sistemas Inteligentes</h3>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="2">
                   <p class="localizacao-empresa">
-                    <span class="locaCor">Localização:</span> Joinville
+                    <strong>Localização: </strong> Joinville
                   </p>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="2">
                   <p class="status"></p>
                 </v-col>
-                <v-col cons="4" class="text-ritgh">
-                  <div class="dotsNav"><MenuAdminEmpresa /></div>
+                <v-col cons="3" class="text-right">
+                  <div class="locaCor"><MenuAdminEmpresa /></div>
                 </v-col>
               </v-row>
             </v-card>
@@ -85,26 +85,30 @@ export default {
   text-transform: none;
 }
 
+.empresa-foto {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
 .list-empresa {
   width: 95%;
   padding: 10px 0;
 }
 
-.v-col {
-  padding: 10px;
-  border-radius: 8px;
-}
 .card-da-empresa {
   background-color: white;
   border-radius: 8px;
-  padding: 25px;
+  padding: 10px;
   display: flex;
   align-items: center;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
 }
-.procurar-Usuarios {
+
+.procurar-empresas {
   width: 450px;
 }
+
 .busca {
   display: flex;
   width: 100%;
@@ -112,20 +116,25 @@ export default {
   justify-content: flex-start;
   flex-direction: row-reverse;
 }
+
 .empresa-nome {
   font-size: 16px;
   font-weight: 600;
 }
 
 .procurar-empresas {
-  width: 80%;
+  width: 450px;
 }
+
 .localizacao-empresa {
   text-align: center;
+  font-size: 12px;
 }
+
 .locaCor {
   padding: 5px;
   margin: 15px;
+  font-weight: 700;
 }
 
 .status {
@@ -157,30 +166,28 @@ export default {
   .list-empresa-row {
     margin-bottom: 10px;
   }
-  .tipodeempresa {
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-  }
-  .card-do-empresa {
+
+  .card-da-empresa {
     flex-direction: row;
     padding: 10px;
   }
 
-  .empresa-nome {
-    font-size: 14px;
+  .localizacao-empresa {
+    text-align: center;
+    font-size: 10px;
   }
 
-  .empresa-email {
+  .empresa-nome {
     font-size: 12px;
   }
+
   .locaCor {
     padding: 5px;
     margin: 15px;
   }
 
   .v-card-text {
-    padding: 20px 20px 10px !important;
+    padding: 10px 15px 5px !important;
   }
 
   .busca {
@@ -189,6 +196,16 @@ export default {
     align-items: center;
     flex-direction: column;
     margin-bottom: 15px;
+  }
+
+  .status {
+    align-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #34c759; // cor verde
+    margin: 0 30px;
   }
 }
 </style>
