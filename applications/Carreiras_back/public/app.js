@@ -41,7 +41,6 @@ app.use(fileupload());
 // Use suas rotas
 app.use('/', routes);
 
-const port = process.env.BACKEND_URL || 4000;
-app.listen(port, () => {
-  console.log(`Server is running in http://localhost:${port}`);
+app.listen(4000, () => {
+  console.log('Server is running on port 4000');
 });
