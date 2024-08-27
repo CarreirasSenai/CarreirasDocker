@@ -43,7 +43,7 @@ export default {
     methods: {
         async login() {
             try {
-                const response = await axios.post('http://localhost:4000/candidato/login', {
+                const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/candidato/login`, {
                     email: this.email,
                     password: this.password
                 }, { withCredentials: true });
