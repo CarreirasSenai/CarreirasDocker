@@ -4,6 +4,10 @@ const authMiddleware = require('../middleware/auth');
 const path = require('path');
 const { json } = require('body-parser');
 
+router.get('/', (req, res) => {
+    res.send('Hello World!');
+  });
+
 // Objetos do controller
 const DataHora = require('../controller/dataHora');
 const Candidato = require('../controller/candidato');
