@@ -53,10 +53,13 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/candidato/login`, {
-          email: this.email,
-          password: this.password
-        }, { withCredentials: true });
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/candidato/login`,
+          {
+            email: this.email,
+            password: this.password
+          },
+          { withCredentials: true }
+        );
 
         console.log('Login bem-sucedido', response.data);
         this.$router.push('/');
@@ -66,18 +69,18 @@ export default {
       }
     },
     goToSignUp() {
-      if (window.location.href.includes("candidato"))
-        window.location.href = "cadastro-candidato"
-      else
-        window.location.href = "cadastro-empresa"
-    },
-    respostaGrupo() {
-      this.$router.push({ path: '/redefinir-senha', query: { resposta: this.resposta } });
-    },
+    if (window.location.href.includes("candidato"))
+      window.location.href = "cadastro-candidato"
+    else
+      window.location.href = "cadastro-empresa"
   },
-  mounted() {
-    this.$route.query.resposta;
+  respostaGrupo() {
+    this.$router.push({ path: '/redefinir-senha', query: { resposta: this.resposta } });
   },
+},
+mounted() {
+  this.$route.query.resposta;
+},
 };
 
 </script>

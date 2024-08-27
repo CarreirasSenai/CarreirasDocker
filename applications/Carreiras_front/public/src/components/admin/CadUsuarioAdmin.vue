@@ -126,7 +126,7 @@ export default {
     async atualizarCadastro() {
       try {
         const response = await axios.post(
-          "http://localhost:4000/update/create",
+          "http://localhost:3000/update/create",
           {
             nomeSocial: this.nomeSocial,
             nomeCompleto: this.nomeCompleto,

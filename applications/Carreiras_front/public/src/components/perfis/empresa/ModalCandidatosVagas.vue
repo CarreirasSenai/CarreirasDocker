@@ -1,7 +1,7 @@
 <template>
     <v-btn variant="text" icon="mdi-account-multiple-check" @click="dialog = true"></v-btn>
 
-    <v-dialog v-model="dialog" min-width="300px" max-width="800px">
+    <v-dialog v-model="dialog" min-width="300px">
         <v-container>
             <v-row>
                 <v-col cols="12">
